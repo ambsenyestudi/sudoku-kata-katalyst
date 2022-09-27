@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{469D1A86-392A-44E9-A82D-31F14BF17A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Domain", "src\domain\Sudoku.Domain.csproj", "{5FEE1987-1DD9-42EA-BEBD-5F4F2BB2CA0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Test", "test\Sudoku.Test.csproj", "{372B5CAE-0429-4831-AB04-BDA44634ED81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FEE1987-1DD9-42EA-BEBD-5F4F2BB2CA0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FEE1987-1DD9-42EA-BEBD-5F4F2BB2CA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FEE1987-1DD9-42EA-BEBD-5F4F2BB2CA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FEE1987-1DD9-42EA-BEBD-5F4F2BB2CA0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{372B5CAE-0429-4831-AB04-BDA44634ED81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{372B5CAE-0429-4831-AB04-BDA44634ED81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{372B5CAE-0429-4831-AB04-BDA44634ED81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{372B5CAE-0429-4831-AB04-BDA44634ED81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5FEE1987-1DD9-42EA-BEBD-5F4F2BB2CA0B} = {469D1A86-392A-44E9-A82D-31F14BF17A40}
+	EndGlobalSection
+EndGlobal

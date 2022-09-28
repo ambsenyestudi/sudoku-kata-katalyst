@@ -5,7 +5,7 @@ namespace Sudoku.Test;
 
 public class GameFeature
 {
-    private readonly GameService _gameService = new GameService(new FileLoader(), new SequenceValidationService());
+    private readonly GameService _gameService = new GameService(new FileLoader(), new SolutionValidationService());
     
     [Fact]
     public void SpotIncorrectSolutions()

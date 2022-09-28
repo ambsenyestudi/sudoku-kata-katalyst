@@ -5,8 +5,8 @@ namespace Sudoku.Infrastructure
     public class GameService
     {
         private readonly FileLoader _fileLoader;
-        private readonly SequenceValidationService _sequenceValidation;
-        public GameService(FileLoader fileLoader, SequenceValidationService sequenceValidation)
+        private readonly SolutionValidationService _sequenceValidation;
+        public GameService(FileLoader fileLoader, SolutionValidationService sequenceValidation)
         {
             _fileLoader = fileLoader;
             _sequenceValidation = sequenceValidation;
@@ -23,13 +23,7 @@ namespace Sudoku.Infrastructure
             {
                 return false;
             }
-            var solutionBoard = new Board(solution);
-            if(solutionBoard.GetRows().Any(x=> !_sequenceValidation.IsSequenceValid(x)))
-            {
-                return false;
-            }
-
-            throw new NotImplementedException();
+            return _sequenceValidation.IsValid(new Board(solution));
         }
 
         private static bool HasEmptyCells(int[] solution) =>

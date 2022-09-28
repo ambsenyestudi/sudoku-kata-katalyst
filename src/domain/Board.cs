@@ -31,5 +31,15 @@
             ? new EmptyCell(row, column)
             : new Cell(value, row, column);
 
+        public List<IEnumerable<Cell>> GetRows()
+        {
+            var result = new List<IEnumerable<Cell>>();
+            for (int i = 0; i < SIZE; i++)
+            {
+                result.Add(Cells.Skip(i * SIZE).Take(SIZE));
+            }
+            return result;
+        }
+
     }
 }

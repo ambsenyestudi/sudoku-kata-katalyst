@@ -4,11 +4,12 @@ namespace Sudoku.Infrastructure
 {
     public class GameService
     {
-        private FileLoader _fileLoader;
-
-        public GameService(FileLoader fileLoader)
+        private readonly FileLoader _fileLoader;
+        private readonly SequenceValidationService _sequenceValidation;
+        public GameService(FileLoader fileLoader, SequenceValidationService sequenceValidation)
         {
             _fileLoader = fileLoader;
+            _sequenceValidation = sequenceValidation;
         }
 
         public Board CreateBoard(string inputPath) =>
@@ -18,7 +19,12 @@ namespace Sudoku.Infrastructure
         public bool IsSolution(Board board, string solutionPath)
         {
             var solution = _fileLoader.LoadBoard(solutionPath);
-            if (HasEmptyCells(solution))
+            if(HasEmptyCells(solution))
+            {
+                return false;
+            }
+            var solutionBoard = new Board(solution);
+            if(solutionBoard.GetRows().Any(x=> !_sequenceValidation.IsSequenceValid(x)))
             {
                 return false;
             }
@@ -27,6 +33,6 @@ namespace Sudoku.Infrastructure
         }
 
         private static bool HasEmptyCells(int[] solution) =>
-            solution.Any(x => EmptyCell.IsEmptyValue(0));
+            solution.Any(x => EmptyCell.IsEmptyValue(x));
     }
 }

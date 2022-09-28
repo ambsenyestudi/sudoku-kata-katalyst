@@ -1,10 +1,11 @@
+using Sudoku.Domain;
 using Sudoku.Infrastructure;
 
 namespace Sudoku.Test;
 
 public class GameFeature
 {
-    private readonly GameService _gameService = new GameService(new FileLoader());
+    private readonly GameService _gameService = new GameService(new FileLoader(), new SequenceValidationService());
     
     [Fact]
     public void SpotIncorrectSolutions()

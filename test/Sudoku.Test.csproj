@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\domain\Sudoku.Domain.csproj" />
+    <ProjectReference Include="..\src\infrastructure\Sudoku.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -18,10 +18,11 @@ namespace Sudoku.Infrastructure
         public bool IsSolution(Board board, string solutionPath)
         {
             var solution = _fileLoader.LoadBoard(solutionPath);
-            if(solution.Any(x=>x == 0))
+            if(solution.Any(x => EmptyCell.IsEmptyValue(0)) )
             {
                 return false;
             }
+            
             throw new NotImplementedException();
         }
     }

@@ -2,8 +2,12 @@
 {
     public record EmptyCell : Cell
     {
-        public EmptyCell(int row, int column) : base(0, row, column, false)
+        private const int EMPTY_VALUE = 0;
+        public EmptyCell(int row, int column) : base(EMPTY_VALUE, row, column, false)
         {
         }
+
+        public static bool IsEmptyValue(int value) =>
+            value == EMPTY_VALUE;
     }
 }

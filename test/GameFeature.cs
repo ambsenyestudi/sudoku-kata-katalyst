@@ -17,6 +17,6 @@ public class GameFeature
     public void SpotCorrectSolutions()
     {
         var board = _gameService.CreateBoard("start_board.csv");
-        Assert.False(_gameService.IsSolution(board, "solution.csv"));
+        Assert.True(_gameService.IsSolution(board, "solution.csv"));
     }
 }

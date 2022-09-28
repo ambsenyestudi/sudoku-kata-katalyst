@@ -4,10 +4,13 @@ namespace Sudoku.Test;
 
 public class BoardShould
 {
-    private readonly Board _board = new Board();
+    
+    private Board _board;
     [Fact]
-    public void Test1()
+    public void CreateAllEmpty()
     {
 
+        _board = new Board(Enumerable.Range(0,81).Select(x=> 0).ToArray());
+        Assert.All(_board.Cells, x => Assert.True(x is EmptyCell));
     }
 }

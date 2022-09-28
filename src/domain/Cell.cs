@@ -2,7 +2,8 @@
 {
     public record Cell
     {
-        
+        private const int EMPTY_VALUE = 0;
+
         public int Value { get; protected set; }
         public int Row { get; }
         public int Column { get; }
@@ -16,5 +17,6 @@
 
         public static int FigureColum(int order, int boardSize) =>
             order % boardSize;
+
     }
 }

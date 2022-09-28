@@ -4,6 +4,7 @@
     {
         private const int SIZE = 9;
         private const int EMPTY_VALUE = 0;
+
         public List<Cell> Cells { get; }
 
         public Board(int[] input)

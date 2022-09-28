@@ -11,12 +11,17 @@ namespace Sudoku.Infrastructure
             _fileLoader = fileLoader;
         }
 
-        public Board CreateBoard(string inputPath)
-        {
-            throw new NotImplementedException();
-        }
+        public Board CreateBoard(string inputPath) =>
+            new Board(_fileLoader.LoadBoard(inputPath));
+        
+
         public bool IsSolution(Board board, string solutionPath)
         {
+            var solution = _fileLoader.LoadBoard(solutionPath);
+            if(solution.Any(x=>x == 0))
+            {
+                return false;
+            }
             throw new NotImplementedException();
         }
     }

@@ -4,23 +4,33 @@
     {
         private const int SIZE = 9;
         private const int EMPTY_VALUE = 0;
+        private readonly RegionExtractorService _regionExtractorService;
 
         public List<Cell> Cells { get; }
 
-        public Board(int[] input)
+        public Board(int[] input, RegionExtractorService regionExtractorService)
         {
             Cells = ToCells(input);
+            _regionExtractorService = regionExtractorService;
         }
 
-        private List<Cell> ToCells(int[] input)
+        public List<SudokuSequence> GetRegions()
         {
-            var result = new List<Cell>();
-            for (int i = 0; i < SIZE * SIZE; i++)
+            var result = new List<SudokuSequence>();
+            for (int i = 0; i < SIZE; i++)
             {
-                result.Add(ToCell(input, i));
+                var region = new List<Cell>();
+                for (int n = 0; n < SIZE; n++)
+                {
+                    var (x, y) = _regionExtractorService.GetIndex(i, n);
+                    var index = y * SIZE + x;
+                    region.Add(Cells[index]);
+                }
+                result.Add(new SudokuSequence(region));
             }
             return result;
         }
+
 
         public List<SudokuSequence> GetColumns()
         {
@@ -38,8 +48,6 @@
             return result;
         }
 
-       
-
         public List<SudokuSequence> GetRows()
         {
             var result = new List<SudokuSequence>();
@@ -47,6 +55,15 @@
             {
 
                 result.Add(new SudokuSequence(SubSequence(i * SIZE, SIZE)));
+            }
+            return result;
+        }
+        private List<Cell> ToCells(int[] input)
+        {
+            var result = new List<Cell>();
+            for (int i = 0; i < SIZE * SIZE; i++)
+            {
+                result.Add(ToCell(input, i));
             }
             return result;
         }

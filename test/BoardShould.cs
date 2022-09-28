@@ -22,7 +22,7 @@ public class BoardShould
     [Fact]
     public void CreateAllEmpty()
     {
-        _board = new Board(Enumerable.Range(0,81).Select(x=> 0).ToArray());
+        _board = new Board(Enumerable.Range(0,81).Select(x=> 0).ToArray(), new RegionExtractorService());
         Assert.All(_board.Cells, x => Assert.True(x is EmptyCell));
     }
 
@@ -34,10 +34,11 @@ public class BoardShould
     public void GetExptectedRow(int index, string expectedRaw)
     {
         var expected = expectedRaw.Split(",").Select(x => int.Parse(x)).ToArray();
-        var board = new Board(sample);
+        var board = new Board(sample, new RegionExtractorService());
         var rows = board.GetRows();
         Assert.True(rows[index].Equals(expected));
     }
+
     [Theory]
     [InlineData(0, "5,6,1,8,4,7,9,2,3")]
     [InlineData(1, "3,7,9,5,2,1,6,8,4")]
@@ -46,8 +47,27 @@ public class BoardShould
     public void GetExptectedColumns(int index, string expectedRaw)
     {
         var expected = expectedRaw.Split(",").Select(x => int.Parse(x)).ToArray();
-        var board = new Board(sample);
-        var rows = board.GetColumns();
-        Assert.True(rows[index].Equals(expected));
+        var board = new Board(sample, new RegionExtractorService());
+        var columns = board.GetColumns();
+        Assert.True(columns[index].Equals(expected));
     }
+    [Theory]
+    [InlineData(0, "5,3,4,6,7,2,1,9,8")]
+    [InlineData(1, "6,7,8,1,9,5,3,4,2")]
+    [InlineData(2, "9,1,2,3,4,8,5,6,7")]
+    [InlineData(3, "8,5,9,4,2,6,7,1,3")]
+    [InlineData(4, "7,6,1,8,5,3,9,2,4")]
+    [InlineData(5, "4,2,3,7,9,1,8,5,6")]
+    [InlineData(6, "9,6,1,2,8,7,3,4,5")]
+    [InlineData(7, "5,3,7,4,1,9,2,8,6")]
+    [InlineData(8, "2,8,4,6,3,5,1,7,9")]
+    public void GetExptectedRegions(int index, string expectedRaw)
+    {
+        var expected = expectedRaw.Split(",").Select(x => int.Parse(x)).ToArray();
+        var board = new Board(sample, new RegionExtractorService());
+        var regions = board.GetRegions();
+        Assert.True(regions[index].Equals(expected));
+    }
+        
 }
+

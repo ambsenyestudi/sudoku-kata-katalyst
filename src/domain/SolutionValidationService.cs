@@ -3,7 +3,10 @@
     public class SolutionValidationService
     {
         public bool IsValid(Board board) =>
-            ValidRows(board) && ValidColumns(board);
+            ValidRows(board) && ValidColumns(board) && ValidRegions(board);
+
+        private bool ValidRegions(Board board) =>
+            AllValid(board.GetRegions());
 
         private bool ValidColumns(Board board) =>
             AllValid(board.GetColumns());

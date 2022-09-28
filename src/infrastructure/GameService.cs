@@ -13,7 +13,7 @@ namespace Sudoku.Infrastructure
         }
 
         public Board CreateBoard(string inputPath) =>
-            new Board(_fileLoader.LoadBoard(inputPath));
+            new Board(_fileLoader.LoadBoard(inputPath), new RegionExtractorService());
         
 
         public bool IsSolution(Board board, string solutionPath)
@@ -23,7 +23,7 @@ namespace Sudoku.Infrastructure
             {
                 return false;
             }
-            return _sequenceValidation.IsValid(new Board(solution));
+            return _sequenceValidation.IsValid(new Board(solution, new RegionExtractorService()));
         }
 
         private static bool HasEmptyCells(int[] solution) =>

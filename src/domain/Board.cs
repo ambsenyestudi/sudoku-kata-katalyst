@@ -3,19 +3,19 @@
     public class Board
     {
         public const int SIZE = 9;
-        public List<(int, int, int)> Cells { get; }
+        public List<Cell> Cells { get; }
 
         public Board(int[] boardLayout)
         {
             Cells = ToCellList(boardLayout);
         }
 
-        private List<(int, int, int)> ToCellList(int[] boardLayout)
+        private List<Cell> ToCellList(int[] boardLayout)
         {
-            var result = new List<(int, int, int)> ();
+            var result = new List<Cell> ();
             for (int i = 0; i < boardLayout.Length; i++)
             {
-                result.Add((i % SIZE, i / SIZE, boardLayout[i]));
+                result.Add(new Cell(i % SIZE, i / SIZE, boardLayout[i]));
             }
             return result;
         }

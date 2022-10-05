@@ -13,6 +13,10 @@
         private List<(int, int, int)> ToCellList(int[] boardLayout)
         {
             var result = new List<(int, int, int)> ();
+            for (int i = 0; i < boardLayout.Length; i++)
+            {
+                result.Add((i % SIZE, i / SIZE, boardLayout[i]));
+            }
             return result;
         }
     }

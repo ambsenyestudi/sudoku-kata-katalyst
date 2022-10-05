@@ -6,10 +6,14 @@ namespace Sudoku.Infrastructure
     {
         public Board CreateBoard(int[] boardLayout)
         {
-            throw new NotImplementedException();
+            return new Board(boardLayout);
         }
         public bool IsSolution(Board board, int[] solutionLayout)
         {
+            if(solutionLayout.Any(x=> x== 0))
+            {
+                return false;
+            }
             throw new NotImplementedException();
         }
     }

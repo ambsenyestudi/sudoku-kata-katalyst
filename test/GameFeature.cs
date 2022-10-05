@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Sudoku.Infrastructure;
 
 namespace Sudoku.Test;
@@ -11,7 +12,9 @@ public class GameFeature
     public void DismisIncorrectSolution()
     {
         var board = _gameService.CreateBoard(LoadFile("start_board.csv"));
-        Assert.False(_gameService.IsSolution(board, LoadFile("start_board.csv")));        
+        var solutionLayout = LoadFile("start_board.csv");
+
+        _gameService.IsSolution(board, solutionLayout).Should().Be(false);        
     }
 
     [Fact]
